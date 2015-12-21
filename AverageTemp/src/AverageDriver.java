@@ -17,7 +17,7 @@ public class AverageDriver
 
 		Job job = new Job();
 		job.setJarByClass(AverageDriver.class);
-		job.setJobName("Max temperature");
+		job.setJobName("Avg temperature");
 
 		FileInputFormat.addInputPath(job,new Path(args[0]));
 		FileOutputFormat.setOutputPath(job,new Path (args[1]));
