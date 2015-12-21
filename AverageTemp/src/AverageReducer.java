@@ -4,16 +4,16 @@ import java.io.IOException;
 
 public class AverageReducer extends Reducer <Text, IntWritable,Text, IntWritable >{
 	public void reduce(Text key,  Iterable<IntWritable> values, Context context) throws IOException,InterruptedException{          
-		int max_temp = 0; 
+		int total_temp = 0; 
 		int count = 0;
 		for (IntWritable value : values){
-			max_temp += value.get();     
+			total_temp += value.get();     
 			count+=1;
 		}
 		System.out.println(
 				"\n########## END OF FILE ##########\n"
-				+ "AVG: " + max_temp + "/" + count + " = " + max_temp/count
+				+ "AVG: " + total_temp + "/" + count + " = " + total_temp/count
 		);
-		context.write(key, new IntWritable(max_temp/count));
+		context.write(key, new IntWritable(total_temp/count));
 	}                                             
 }
